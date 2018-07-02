@@ -54,9 +54,10 @@ public class PersonService {
 	    return null;
 	  }
 	  
-
+//@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 //CREATE / insert
 	    @POST
+	    @Path("/add")
 	    @Produces(MediaType.APPLICATION_JSON)
 	    @Consumes(MediaType.APPLICATION_JSON)
 	    public Response createPerson(PersonBean person) {
@@ -121,6 +122,7 @@ public class PersonService {
 	    
 //UPDATE operation
 	    @PUT
+	    @Path("/update")
 	    @Produces(MediaType.APPLICATION_JSON)
 	    @Consumes(MediaType.APPLICATION_JSON)
 	    public Response updatePerson(PersonBean person) {
@@ -150,7 +152,7 @@ public class PersonService {
 	    
 // DELETE operation
 	    @DELETE
-	    @Path("/delete/{id}")
+	    @Path("/delete/{codigo}")
 	    @Produces(MediaType.APPLICATION_JSON)
 	    public Response deleteePerson(@PathParam("codigo") int codigo) {       
 	        GenericResponse response = new GenericResponse();		

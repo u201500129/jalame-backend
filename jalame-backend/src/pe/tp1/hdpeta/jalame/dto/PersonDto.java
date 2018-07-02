@@ -192,8 +192,10 @@ public class PersonDto {
 	    		  		 " P_ESTADO = '" + persona.getEstadop().trim() + "', " +
 	    		  		 " CLAVE = '" + persona.getClave().trim() + "', " +
 	    		  		 " TELEFONO = '" + persona.getTelefono().trim() + "' " + 
-	        			 " WHERE = COD_PERSONA = " + persona.getCodpersona() + " " ;
+	        			 " WHERE COD_PERSONA = " + persona.getCodpersona() + " " ;
 
+	        	//System.out.println("SQL: " + sqlSt);
+	        	
 	        	
 	        	Statement st = dAccess.getConnection().createStatement();      	
 	        	st.executeUpdate(sqlSt);
@@ -218,12 +220,13 @@ public class PersonDto {
 		    return personResp;
 		  }
 	  
+	  
 	  public int deletePersona(int codigoPersona) {
 		    DataAccess dAccess = new DataAccess();
 	        
 	        try    {
 		    
-	        	String sqlSt = " UPDATE PERSONA SET P_ESTADO = '0' WHERE = COD_PERSONA = " + codigoPersona;
+	        	String sqlSt = " UPDATE PERSONA SET P_ESTADO = '0' WHERE COD_PERSONA = " + codigoPersona;
 	        	Statement st = dAccess.getConnection().createStatement();      	
 	        	st.executeUpdate(sqlSt);
 
