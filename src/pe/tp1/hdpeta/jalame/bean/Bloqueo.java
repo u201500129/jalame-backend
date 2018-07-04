@@ -9,13 +9,13 @@ public class Bloqueo {
     private Date fecha;
     
     
-	public Bloqueos() {
+	public Bloqueo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public Bloqueos(int codPerSolicita, int codPerBloquea, String motivo, Date fecha) {
+	public Bloqueo(int codPerSolicita, int codPerBloquea, String motivo, Date fecha) {
 		super();
 		this.codPerSolicita = codPerSolicita;
 		this.codPerBloquea = codPerBloquea;
@@ -62,7 +62,6 @@ public class Bloqueo {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-
 
  
 	
