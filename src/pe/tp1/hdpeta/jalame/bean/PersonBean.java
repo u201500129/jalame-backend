@@ -12,9 +12,12 @@ public class PersonBean {
 	private String perfil;
 	private String carrera;
 	private String correo;
-	private String estadoR;
-	private String clave;
 	private String telefono;
+	private int calificacion;
+	private String clave;
+	private String estadoR;
+	
+	
 	 
 	
 	public PersonBean() {
@@ -22,8 +25,9 @@ public class PersonBean {
 		// TODO constructor stub
 	}
 
+
 	public PersonBean(int codPersona, String nombre, String apellido, String sexo, String dni, String perfil,
-			String carrera, String correo, String estadoR, String clave, String telefono) {
+			String carrera, String correo, String telefono, int calificacion, String clave, String estadoR) {
 		super();
 		this.codPersona = codPersona;
 		this.nombre = nombre;
@@ -33,12 +37,15 @@ public class PersonBean {
 		this.perfil = perfil;
 		this.carrera = carrera;
 		this.correo = correo;
-		this.estadoR = estadoR;
-		this.clave = clave;
 		this.telefono = telefono;
+		this.calificacion = calificacion;
+		this.clave = clave;
+		this.estadoR = estadoR;
 	}
-	
-	
+
+
+
+
 	public int getCodPersona() {
 		return codPersona;
 	}
@@ -104,6 +111,16 @@ public class PersonBean {
 	}
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+
+
+	public int getCalificacion() {
+		return calificacion;
+	}
+
+
+	public void setCalificacion(int calificacion) {
+		this.calificacion = calificacion;
 	}
 	
 

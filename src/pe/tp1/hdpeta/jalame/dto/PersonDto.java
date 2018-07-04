@@ -19,7 +19,7 @@ public class PersonDto {
 		    try    {
  
 		    	String sqlSt = " SELECT CODPERSONA,NOMBRE,APELLIDO,SEXO,DNI,PERFIL," + 
-		    		  		 " CARRERA, CORREO, ESTADOR, TELEFONO " + 
+		    		  		 " CARRERA, CORREO, ESTADOR, TELEFONO, CALIFICACION " + 
 		    		  		 " FROM PERSONA WHERE ESTADOR <> '0' AND CORREO = ? AND CLAVE = ? " ;
 		    	 
 		      PreparedStatement pcst = dAccess.getConnection().prepareCall(sqlSt);
@@ -59,7 +59,7 @@ public class PersonDto {
 		    try    {
 		     
 		      String sqlSt = " SELECT CODPERSONA, NOMBRE,APELLIDO,SEXO,DNI,PERFIL," + 
-		    		  		 " CARRERA, CORREO, ESTADOR, TELEFONO " + 
+		    		  		 " CARRERA, CORREO, ESTADOR, TELEFONO,CALIFICACION " + 
 		    		  		 " FROM PERSONA WHERE  ESTADOR <> '0' AND CODPERSONA = " + codigoPersona ;
 		      Statement st = dAccess.getConnection().createStatement();
 		      ResultSet rs = st.executeQuery(sqlSt);
@@ -96,7 +96,7 @@ public class PersonDto {
 		      System.out.println("Debug listarPersona/apellido: "  +  apellido);	
 		       
 		      String sqlSt = " SELECT CODPERSONA,NOMBRE,APELLIDO,SEXO,DNI,PERFIL," + 
-		    		  		 " CARRERA, CORREO, ESTADOR, TELEFONO " + 
+		    		  		 " CARRERA, CORREO, ESTADOR, TELEFONO, CALIFICACION " + 
 		    		  		 " FROM PERSONA WHERE ESTADOR <> '0' AND APELLIDO LIKE '%" + apellido.trim().replace(" ", "%") + "%' " ;
 		      sqlSt = sqlSt.replace("%%", "%");
 		    		  
@@ -193,7 +193,7 @@ public class PersonDto {
 	    		  		 " CORREO = '" + persona.getCorreo().trim() + "', " +
 	    		  		 " ESTADOR = '" + persona.getEstadoR().trim() + "', " +
 	    		  		 " CLAVE = '" + persona.getClave().trim() + "', " +
-	    		  		 " TELEFONO = '" + persona.getTelefono().trim() + "' " + 
+	    		  		 " TELEFONO = '" + persona.getTelefono().trim() + "' " +
 	        			 " WHERE CODPERSONA = " + persona.getCodPersona() + " " ;
 
 	        	//System.out.println("SQL: " + sqlSt);
@@ -259,9 +259,11 @@ public class PersonDto {
 		        person.setPerfil(rs.getString("PERFIL"));
 		        person.setCarrera(rs.getString("CARRERA"));
 		        person.setCorreo(rs.getString("CORREO"));
-		        person.setEstadoR(rs.getString("ESTADOR"));
-		        //person.setClave(rs.getString("CLAVE"));
 		        person.setTelefono(rs.getString("TELEFONO"));
+		        person.setCalificacion(rs.getInt("CALIFICACION"));
+		        //person.setClave(rs.getString("CLAVE"));
+		        person.setEstadoR(rs.getString("ESTADOR"));
+
 		        
 		  }catch(Exception e) {  
 		  }
