@@ -4,23 +4,46 @@ package pe.tp1.hdpeta.jalame.bean;
 
 //@XmlRootElement(name = "person")
 public class PersonBean {
-	int codpersona;
-	String nombre;
-	String apellido;
-	String sexo;
-	String dni;
-	String carrera;
-	String correo;
-	String estadop;
-	String clave;
-	String telefono;
+	private int codPersona;
+	private String nombre;
+	private String apellido;
+	private String sexo;
+	private String dni;
+	private String perfil;
+	private String carrera;
+	private String correo;
+	private String estadoR;
+	private String clave;
+	private String telefono;
+	 
 	
-	
-	public int getCodpersona() {
-		return codpersona;
+	public PersonBean() {
+		super();
+		// TODO constructor stub
 	}
-	public void setCodpersona(int codpersona) {
-		this.codpersona = codpersona;
+
+	public PersonBean(int codPersona, String nombre, String apellido, String sexo, String dni, String perfil,
+			String carrera, String correo, String estadoR, String clave, String telefono) {
+		super();
+		this.codPersona = codPersona;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.sexo = sexo;
+		this.dni = dni;
+		this.perfil = perfil;
+		this.carrera = carrera;
+		this.correo = correo;
+		this.estadoR = estadoR;
+		this.clave = clave;
+		this.telefono = telefono;
+	}
+	
+	
+	public int getCodPersona() {
+		return codPersona;
+	}
+	public void setCodPersona(int codPersona) {
+		this.codPersona = codPersona;
 	}
 	public String getNombre() {
 		return nombre;
@@ -46,6 +69,12 @@ public class PersonBean {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
+	public String getPerfil() {
+		return perfil;
+	}
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
 	public String getCarrera() {
 		return carrera;
 	}
@@ -58,11 +87,11 @@ public class PersonBean {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	public String getEstadop() {
-		return estadop;
+	public String getEstadoR() {
+		return estadoR;
 	}
-	public void setEstadop(String estadop) {
-		this.estadop = estadop;
+	public void setEstadoR(String estadoR) {
+		this.estadoR = estadoR;
 	}
 	public String getClave() {
 		return clave;
@@ -78,6 +107,5 @@ public class PersonBean {
 	}
 	
 
-	
 	
 }

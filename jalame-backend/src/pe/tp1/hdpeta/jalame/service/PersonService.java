@@ -23,7 +23,8 @@ import pe.tp1.hdpeta.jalame.xmllist.PersonList;
 public class PersonService {
 
 	PersonBusiness personBusiness = new PersonBusiness();  
-	  
+
+//LOGIN
 	  @GET
 	  @Path("/login/{user}/{passw}") 
 	  @Produces({"application/json"}) 
@@ -34,7 +35,7 @@ public class PersonService {
 	    try{ 
 	    	PersonBean person = personBusiness.login(user, passw); 
 	    	
-	    	if (person.getCodpersona() > 0 ) {
+	    	if (person.getCodPersona() > 0 ) {
 	    		return Response.ok(person).build();
 	    		//return Response.status(200).entity(person).build();	
 
@@ -54,7 +55,6 @@ public class PersonService {
 	    return null;
 	  }
 	  
-//@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 //CREATE / insert
 	    @POST
 	    @Path("/add")
@@ -65,15 +65,15 @@ public class PersonService {
 	    	try{ 
 	    		PersonBean personResp = personBusiness.addPerson(person);
 	    		
-		    	if (personResp.getCodpersona() > 0 ) {
+		    	if (personResp.getCodPersona() > 0 ) {
 		    		return Response.ok(personResp).build();
 		    		//return Response.status(200).entity(personResp).build();	
 
 		    	}else {
 	    		
 		    		response.setStatus(false);
-					response.setMessage("Error: Usuario o Clave Incorrecto");
-					response.setErrorCode("EC002");
+					response.setMessage("Error: No ha sido posible crear el registro");
+					response.setErrorCode("EC001");
 					return Response.status(Response.Status.NOT_FOUND).entity(response).build();
 
 		    		//return Response.status(Response.Status.NOT_FOUND).build();
@@ -96,7 +96,7 @@ public class PersonService {
 		    try{ 
 		    	PersonBean person = personBusiness.getPersona(codigo); 
 		    	
-		    	if (person.getCodpersona() > 0 ) {
+		    	if (person.getCodPersona() > 0 ) {
 		    		return Response.ok(person).build();
 		    		//return Response.status(200).entity(person).build();	
 
@@ -131,7 +131,7 @@ public class PersonService {
 			    try{ 
 			    	PersonBean personResp = personBusiness.updatePersona(person); 
 			    	
-			    	if (personResp.getCodpersona() > 0 ) { 
+			    	if (personResp.getCodPersona() > 0 ) { 
 			    		return Response.ok(personResp).build();
 
 			    	}else {
@@ -160,18 +160,18 @@ public class PersonService {
 		    	
 		    	if (personBusiness.deletePersona(codigo) > 0 ) {
 		    		response.setStatus(true);
-					response.setMessage("Confirmación: Persona eliminada correctamente");
+					response.setMessage("Confirmación: Registro eliminado correctamente");
 					response.setErrorCode("MC001");
 		    		return Response.ok(response).build();
 
 		    	}else {
 	    		
 		    		response.setStatus(false);
-					response.setMessage("Error: No se ha podido eliminar el registro de persona.");
+					response.setMessage("Error: No se ha podido eliminar el registro.");
 					response.setErrorCode("EC004");
 					return Response.status(Response.Status.NOT_FOUND).entity(response).build();
 		    	}
-		    		
+
 		    }catch (Exception e){
 		    	System.out.println("LOGIN: " + e.getMessage() );
 		    }
@@ -180,12 +180,10 @@ public class PersonService {
 	    
 
 	    
-	    
-	  
-//@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+// LIST with Filter
 	  @GET
 	  @Path("/list/{apellido}") 
-	  @Produces({"application/xml"}) 
+	  @Produces({"application/json"}) 
 	  public PersonList getStockByCodigo(@PathParam("apellido") String apellido){
 		try{
 	      ArrayList<PersonBean> personList = personBusiness.getPersonList(apellido);
@@ -196,11 +194,19 @@ public class PersonService {
 	  
 
 
+	  
+	  
+	  
 /*
+	@GET
+	@Path("/listuser")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public List<User> getAllUsers() {
         List<User> userList = userService.getAllUsers();
         return userList;
     }
+    
  */
 	  
 	  

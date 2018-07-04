@@ -18,9 +18,9 @@ public class PersonDto {
 	        
 		    try    {
  
-		    	String sqlSt = " SELECT COD_PERSONA,NOMBRE,APELLIDO,SEXO,DNI," + 
-		    		  		 " CARRERA, CORREO, P_ESTADO, TELEFONO " + 
-		    		  		 " FROM PERSONA WHERE P_ESTADO <> '0' AND CORREO = ? AND CLAVE = ? " ;
+		    	String sqlSt = " SELECT CODPERSONA,NOMBRE,APELLIDO,SEXO,DNI,PERFIL," + 
+		    		  		 " CARRERA, CORREO, ESTADOR, TELEFONO " + 
+		    		  		 " FROM PERSONA WHERE ESTADOR <> '0' AND CORREO = ? AND CLAVE = ? " ;
 		    	 
 		      PreparedStatement pcst = dAccess.getConnection().prepareCall(sqlSt);
 		      
@@ -50,6 +50,7 @@ public class PersonDto {
 		    return person;
 		  }
 
+	  
 	  public PersonBean getPersona(int codigoPersona) {
 
 		    DataAccess dAccess = new DataAccess();
@@ -57,9 +58,9 @@ public class PersonDto {
 	        
 		    try    {
 		     
-		      String sqlSt = " SELECT COD_PERSONA,NOMBRE,APELLIDO,SEXO,DNI," + 
-		    		  		 " CARRERA, CORREO, P_ESTADO, TELEFONO " + 
-		    		  		 " FROM PERSONA WHERE  P_ESTADO <> '0' AND COD_PERSONA = " + codigoPersona ;
+		      String sqlSt = " SELECT CODPERSONA, NOMBRE,APELLIDO,SEXO,DNI,PERFIL," + 
+		    		  		 " CARRERA, CORREO, ESTADOR, TELEFONO " + 
+		    		  		 " FROM PERSONA WHERE  ESTADOR <> '0' AND CODPERSONA = " + codigoPersona ;
 		      Statement st = dAccess.getConnection().createStatement();
 		      ResultSet rs = st.executeQuery(sqlSt);
 		      
@@ -94,9 +95,9 @@ public class PersonDto {
 		    	
 		      System.out.println("Debug listarPersona/apellido: "  +  apellido);	
 		       
-		      String sqlSt = " SELECT COD_PERSONA,NOMBRE,APELLIDO,SEXO,DNI," + 
-		    		  		 " CARRERA, CORREO, P_ESTADO, TELEFONO " + 
-		    		  		 " FROM PERSONA WHERE P_ESTADO <> '0' AND APELLIDO LIKE '%" + apellido.trim().replace(" ", "%") + "%' " ;
+		      String sqlSt = " SELECT CODPERSONA,NOMBRE,APELLIDO,SEXO,DNI,PERFIL," + 
+		    		  		 " CARRERA, CORREO, ESTADOR, TELEFONO " + 
+		    		  		 " FROM PERSONA WHERE ESTADOR <> '0' AND APELLIDO LIKE '%" + apellido.trim().replace(" ", "%") + "%' " ;
 		      sqlSt = sqlSt.replace("%%", "%");
 		    		  
 		      Statement st = dAccess.getConnection().createStatement();
@@ -125,7 +126,6 @@ public class PersonDto {
 		    return personList;
 		  }
 
-
 	  public PersonBean addPersona(PersonBean persona) {
 
 		    DataAccess dAccess = new DataAccess();
@@ -136,14 +136,15 @@ public class PersonDto {
 	        
 	        try    {
 		    
-	        	String sqlSt = " INSERT INTO PERSONA(NOMBRE,APELLIDO,SEXO,DNI,CARRERA,CORREO,P_ESTADO,CLAVE,TELEFONO) VALUES( " + 
+	        	String sqlSt = " INSERT INTO PERSONA(NOMBRE,APELLIDO,SEXO,DNI,PERFIL,CARRERA,CORREO,ESTADOR,CLAVE,TELEFONO) VALUES( " + 
 	    		  		 " '" + persona.getNombre().trim() + "', " +
 	    		  		 " '" + persona.getApellido().trim() + "', " +
 	    		  		 " '" + persona.getSexo().trim() + "', " +
 	    		  		 " '" + persona.getDni().trim() + "', " +
+	    		  		 " '" + persona.getPerfil().trim() + "', " +
 	    		  		 " '" + persona.getCarrera().trim() + "', " +
 	    		  		 " '" + persona.getCorreo().trim() + "', " +
-	    		  		 " '" + persona.getEstadop().trim() + "', " +
+	    		  		 " '" + persona.getEstadoR().trim() + "', " +
 	    		  		 " '" + persona.getClave().trim() + "', " +
 	    		  		 " '" + persona.getTelefono().trim() + "') " ; 
 
@@ -187,12 +188,13 @@ public class PersonDto {
 	    		  		 " APELLIDO = '" + persona.getApellido().trim() + "', " +
 	    		  		 " SEXO = '" + persona.getSexo().trim() + "', " +
 	    		  		 " DNI = '" + persona.getDni().trim() + "', " +
+	    		  		 " PERFIL = '" + persona.getPerfil().trim() + "', " +
 	    		  		 " CARRERA = '" + persona.getCarrera().trim() + "', " +
 	    		  		 " CORREO = '" + persona.getCorreo().trim() + "', " +
-	    		  		 " P_ESTADO = '" + persona.getEstadop().trim() + "', " +
+	    		  		 " ESTADOR = '" + persona.getEstadoR().trim() + "', " +
 	    		  		 " CLAVE = '" + persona.getClave().trim() + "', " +
 	    		  		 " TELEFONO = '" + persona.getTelefono().trim() + "' " + 
-	        			 " WHERE COD_PERSONA = " + persona.getCodpersona() + " " ;
+	        			 " WHERE CODPERSONA = " + persona.getCodPersona() + " " ;
 
 	        	//System.out.println("SQL: " + sqlSt);
 	        	
@@ -201,7 +203,7 @@ public class PersonDto {
 	        	st.executeUpdate(sqlSt);
 	        	
 	        	if (st.getUpdateCount() > 0 ) {
-	                personResp = getPersona(persona.getCodpersona());
+	                personResp = getPersona(persona.getCodPersona());
 	            }
 		         		            
 		    }    catch (SQLException se)    {
@@ -219,14 +221,12 @@ public class PersonDto {
 		    
 		    return personResp;
 		  }
-	  
-	  
+	  	  
 	  public int deletePersona(int codigoPersona) {
 		    DataAccess dAccess = new DataAccess();
 	        
 	        try    {
-		    
-	        	String sqlSt = " UPDATE PERSONA SET P_ESTADO = '0' WHERE COD_PERSONA = " + codigoPersona;
+	        	String sqlSt = " UPDATE PERSONA SET ESTADOR = '0' WHERE CODPERSONA = " + codigoPersona;
 	        	Statement st = dAccess.getConnection().createStatement();      	
 	        	st.executeUpdate(sqlSt);
 
@@ -243,9 +243,7 @@ public class PersonDto {
 		    	}catch(Exception e)    {
 		    		System.out.println("Error Dto/close: " + e.getMessage());
 		    	}
-
 		    }
-		    
 		    return -1 ;
 		  }
 	  
@@ -253,14 +251,15 @@ public class PersonDto {
 		  PersonBean person = new PersonBean();
 		  
 		  try {
-		        person.setCodpersona(rs.getInt("COD_PERSONA"));
+		        person.setCodPersona(rs.getInt("CODPERSONA"));
 		        person.setNombre(rs.getString("NOMBRE"));
 		        person.setApellido(rs.getString("APELLIDO"));
 		        person.setSexo(rs.getString("SEXO"));
 		        person.setDni(rs.getString("DNI"));
+		        person.setPerfil(rs.getString("PERFIL"));
 		        person.setCarrera(rs.getString("CARRERA"));
 		        person.setCorreo(rs.getString("CORREO"));
-		        person.setEstadop(rs.getString("P_ESTADO"));
+		        person.setEstadoR(rs.getString("ESTADOR"));
 		        //person.setClave(rs.getString("CLAVE"));
 		        person.setTelefono(rs.getString("TELEFONO"));
 		        
