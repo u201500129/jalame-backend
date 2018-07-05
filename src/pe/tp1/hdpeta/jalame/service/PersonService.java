@@ -50,7 +50,7 @@ public class PersonService {
 	    	}
 	    		
 	    }catch (Exception e){
-	    	System.out.println("LOGIN: " + e.getMessage() );
+	    	System.out.println("ERROR: " + e.getMessage() );
 	    }
 	    return null;
 	  }
@@ -81,7 +81,7 @@ public class PersonService {
 		    	}
 		    		
 		    }catch (Exception e){
-		    	System.out.println("LOGIN: " + e.getMessage() );
+		    	System.out.println("ERROR: " + e.getMessage() );
 		    }
 	    	return null;
 	    }
@@ -112,7 +112,7 @@ public class PersonService {
 		    	}
 		    		
 		    }catch (Exception e){
-		    	System.out.println("LOGIN: " + e.getMessage() );
+		    	System.out.println("ERROR: " + e.getMessage() );
 		    }
 		    return null;
 		  }
@@ -143,7 +143,7 @@ public class PersonService {
 						return Response.status(Response.Status.NOT_FOUND).entity(response).build();
 			    	}
 			    }catch (Exception e){
-			    	System.out.println("LOGIN: " + e.getMessage() );
+			    	System.out.println("ERROR: " + e.getMessage() );
 			    }
 			    return null;
 	    }
@@ -174,7 +174,7 @@ public class PersonService {
 		    	}
 
 		    }catch (Exception e){
-		    	System.out.println("LOGIN: " + e.getMessage() );
+		    	System.out.println("ERROR: " + e.getMessage() );
 		    }
 		    return null;
 	    }
@@ -185,7 +185,7 @@ public class PersonService {
 	  @GET
 	  @Path("/list/{apellido}") 
 	  @Produces({"application/json"}) 
-	  public PersonList getStockByCodigo(@PathParam("apellido") String apellido){
+	  public PersonList getPersonList(@PathParam("apellido") String apellido){
 		try{
 	      ArrayList<PersonBean> personList = personBusiness.getPersonList(apellido);
 	      return new PersonList(personList);

@@ -59,7 +59,7 @@ public class PersonDto {
 		    try    {
 		     
 		      String sqlSt = " SELECT CODPERSONA, NOMBRE,APELLIDO,SEXO,DNI,PERFIL," + 
-		    		  		 " CARRERA, CORREO, ESTADOR, TELEFONO,CALIFICACION " + 
+		    		  		 " CARRERA, CORREO, TELEFONO,CALIFICACION, ESTADOR " + 
 		    		  		 " FROM PERSONA WHERE  ESTADOR <> '0' AND CODPERSONA = " + codigoPersona ;
 		      Statement st = dAccess.getConnection().createStatement();
 		      ResultSet rs = st.executeQuery(sqlSt);
@@ -96,7 +96,7 @@ public class PersonDto {
 		      System.out.println("Debug listarPersona/apellido: "  +  apellido);	
 		       
 		      String sqlSt = " SELECT CODPERSONA,NOMBRE,APELLIDO,SEXO,DNI,PERFIL," + 
-		    		  		 " CARRERA, CORREO, ESTADOR, TELEFONO, CALIFICACION " + 
+		    		  		 " CARRERA, CORREO, TELEFONO, CALIFICACION, ESTADOR " + 
 		    		  		 " FROM PERSONA WHERE ESTADOR <> '0' AND APELLIDO LIKE '%" + apellido.trim().replace(" ", "%") + "%' " ;
 		      sqlSt = sqlSt.replace("%%", "%");
 		    		  
@@ -136,7 +136,7 @@ public class PersonDto {
 	        
 	        try    {
 		    
-	        	String sqlSt = " INSERT INTO PERSONA(NOMBRE,APELLIDO,SEXO,DNI,PERFIL,CARRERA,CORREO,ESTADOR,CLAVE,TELEFONO) VALUES( " + 
+	        	String sqlSt = " INSERT INTO PERSONA(NOMBRE,APELLIDO,SEXO,DNI,PERFIL,CARRERA,CORREO,CLAVE,TELEFONO) VALUES( " + 
 	    		  		 " '" + persona.getNombre().trim() + "', " +
 	    		  		 " '" + persona.getApellido().trim() + "', " +
 	    		  		 " '" + persona.getSexo().trim() + "', " +
@@ -144,7 +144,6 @@ public class PersonDto {
 	    		  		 " '" + persona.getPerfil().trim() + "', " +
 	    		  		 " '" + persona.getCarrera().trim() + "', " +
 	    		  		 " '" + persona.getCorreo().trim() + "', " +
-	    		  		 " '" + persona.getEstadoR().trim() + "', " +
 	    		  		 " '" + persona.getClave().trim() + "', " +
 	    		  		 " '" + persona.getTelefono().trim() + "') " ; 
 
@@ -191,9 +190,9 @@ public class PersonDto {
 	    		  		 " PERFIL = '" + persona.getPerfil().trim() + "', " +
 	    		  		 " CARRERA = '" + persona.getCarrera().trim() + "', " +
 	    		  		 " CORREO = '" + persona.getCorreo().trim() + "', " +
-	    		  		 " ESTADOR = '" + persona.getEstadoR().trim() + "', " +
 	    		  		 " CLAVE = '" + persona.getClave().trim() + "', " +
-	    		  		 " TELEFONO = '" + persona.getTelefono().trim() + "' " +
+	    		  		 " TELEFONO = '" + persona.getTelefono().trim() + "', " +
+	    		  		 " ESTADOR = '" + persona.getEstadoR().trim() + "' " +
 	        			 " WHERE CODPERSONA = " + persona.getCodPersona() + " " ;
 
 	        	//System.out.println("SQL: " + sqlSt);
@@ -221,7 +220,8 @@ public class PersonDto {
 		    
 		    return personResp;
 		  }
-	  	  
+	  
+	  
 	  public int deletePersona(int codigoPersona) {
 		    DataAccess dAccess = new DataAccess();
 	        
