@@ -42,10 +42,8 @@ public class VehiculoDto {
 		    }	    
 		    return vehiculo;
 		  }
-	  
-	  
-	  
-	  public ArrayList<VehiculoBean> listarvehiculo(int codigo, String latitud, String longitud) {
+	   
+	  public ArrayList<VehiculoBean> listarVehiculo(int codigo, String latitud, String longitud) {
 
 		    DataAccess dAccess = new DataAccess();
 		    ArrayList<VehiculoBean> vehiculoList = new ArrayList<VehiculoBean>();
@@ -61,8 +59,7 @@ public class VehiculoDto {
 		      
 		      ResultSet rs = pcst.executeQuery();
 		      
-		      while (rs.next()){
-			      //vehiculoList.add(getVehiculo(rs.getInt("CODVEHICULO")));	        
+		      while (rs.next()){ 	        
 		    	  vehiculoList.add(prepareVehiculo(rs));
 			  }
 		            
@@ -82,7 +79,7 @@ public class VehiculoDto {
 		    return vehiculoList;
 		  }
 
-	  public VehiculoBean addvehiculo(VehiculoBean vehiculo) {
+	  public VehiculoBean addVehiculo(VehiculoBean vehiculo) {
 
 		    DataAccess dAccess = new DataAccess();
 	        VehiculoBean vehiculoResp = new VehiculoBean();
@@ -134,11 +131,7 @@ public class VehiculoDto {
 		    
 		    return vehiculoResp;
 		  }
-	  
-	  
-		// CODVEHICULO,CODPERSONA,POLIZASOAT,MARCA,MODELO,AFABRICA,MATRICULA,COLOR,ASIENTOSTOTAL,ASIENTOSDISP,
-		// LATITUD,LONGITUD,VISIBLE,CALIFICACION,ESTADOR,FOTO,TSUPDATE
-	  
+	  	  
 	  public VehiculoBean updateVehiculo(VehiculoBean vehiculo) {
 
 		    DataAccess dAccess = new DataAccess();
@@ -185,9 +178,7 @@ public class VehiculoDto {
 		    
 		    return vehiculoResp;
 		  }
-	  	  
-	  
-	  
+	  	   
 	  public int deleteVehiculo(int codigoVehiculo) {
 		    DataAccess dAccess = new DataAccess();
 	        

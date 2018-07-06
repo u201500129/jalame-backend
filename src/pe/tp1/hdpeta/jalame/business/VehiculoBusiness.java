@@ -11,7 +11,7 @@ public class VehiculoBusiness {
 	 
 	  
 	  public VehiculoBean addVehiculo(VehiculoBean vehiculo){
-	    return this.vehiculoDto.addvehiculo(vehiculo);
+	    return this.vehiculoDto.addVehiculo(vehiculo);
 	  }
 	  
 	  public VehiculoBean getVehiculo(int codigoVehiculo) {
@@ -40,7 +40,7 @@ public class VehiculoBusiness {
 	  
 
 	  public ArrayList<VehiculoBean> getVehiculoList(int codigoUsuario, String latitud, String longitud){
-		    return this.vehiculoDto.listarvehiculo(codigoUsuario, latitud, longitud);
+		    return this.vehiculoDto.listarVehiculo(codigoUsuario, latitud, longitud);
 	  }
 	   
 	  

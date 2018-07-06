@@ -1,6 +1,6 @@
 package pe.tp1.hdpeta.jalame.bean;
 
-import java.util.Date;
+ 
 
 public class ServicioBean {
 
@@ -10,9 +10,9 @@ public class ServicioBean {
     private int codVehiculo;
     private int codTarifa;
     private int codFormaPago;
-    private Date fecRegistro;
-    private Date inicioServ;
-    private Date finServ;
+    private String fecRegistro;
+    private String inicioServ;
+    private String finServ;
     private String origenDes;
     private String origenLat;
     private String origenLon;
@@ -22,9 +22,11 @@ public class ServicioBean {
     private int calificacionUsuario;
     private int calificacionConductor;
     private int calificacionVehiculo;
+    private String commtUsua;
+    private String commtCond;
     private String estadoServ;
     private String estadoR;
-    private Date tsupdate;
+    private String tsupdate;
     
     
 	public ServicioBean() {
@@ -33,10 +35,11 @@ public class ServicioBean {
 	}
 
 
-	public ServicioBean(int codServicio, int codConductor, int codUsuario, int codVehiculo, int codTarifa, int codFormaPago,
-			Date fecRegistro, Date inicioServ, Date finServ, String origenDes, String origenLat, String origenLon,
-			String destinoDes, String destinoLat, String destinoLon, int calificacionUsuario, int calificacionConductor,
-			int calificacionVehiculo, String estadoServ, String estadoR, Date tsupdate) {
+	public ServicioBean(int codServicio, int codConductor, int codUsuario, int codVehiculo, int codTarifa,
+			int codFormaPago, String fecRegistro, String inicioServ, String finServ, String origenDes, String origenLat,
+			String origenLon, String destinoDes, String destinoLat, String destinoLon, int calificacionUsuario,
+			int calificacionConductor, int calificacionVehiculo, String commtUsua, String commtCond, String estadoServ,
+			String estadoR, String tsupdate) {
 		super();
 		this.codServicio = codServicio;
 		this.codConductor = codConductor;
@@ -56,10 +59,15 @@ public class ServicioBean {
 		this.calificacionUsuario = calificacionUsuario;
 		this.calificacionConductor = calificacionConductor;
 		this.calificacionVehiculo = calificacionVehiculo;
+		this.commtUsua = commtUsua;
+		this.commtCond = commtCond;
 		this.estadoServ = estadoServ;
 		this.estadoR = estadoR;
 		this.tsupdate = tsupdate;
 	}
+
+
+
 
 
 	public int getCodServicio() {
@@ -122,32 +130,32 @@ public class ServicioBean {
 	}
 
 
-	public Date getFecRegistro() {
+	public String getFecRegistro() {
 		return fecRegistro;
 	}
 
 
-	public void setFecRegistro(Date fecRegistro) {
+	public void setFecRegistro(String fecRegistro) {
 		this.fecRegistro = fecRegistro;
 	}
 
 
-	public Date getInicioServ() {
+	public String getInicioServ() {
 		return inicioServ;
 	}
 
 
-	public void setInicioServ(Date inicioServ) {
+	public void setInicioServ(String inicioServ) {
 		this.inicioServ = inicioServ;
 	}
 
 
-	public Date getFinServ() {
+	public String getFinServ() {
 		return finServ;
 	}
 
 
-	public void setFinServ(Date finServ) {
+	public void setFinServ(String finServ) {
 		this.finServ = finServ;
 	}
 
@@ -241,6 +249,25 @@ public class ServicioBean {
 		this.calificacionVehiculo = calificacionVehiculo;
 	}
 
+	public String getCommtUsua() {
+		return commtUsua;
+	}
+
+
+	public void setCommtUsua(String commtUsua) {
+		this.commtUsua = commtUsua;
+	}
+
+
+	public String getCommtCond() {
+		return commtCond;
+	}
+
+
+	public void setCommtCond(String commtCond) {
+		this.commtCond = commtCond;
+	}
+
 
 	public String getEstadoServ() {
 		return estadoServ;
@@ -262,12 +289,12 @@ public class ServicioBean {
 	}
 
 
-	public Date getTsupdate() {
+	public String getTsupdate() {
 		return tsupdate;
 	}
 
 
-	public void setTsupdate(Date tsupdate) {
+	public void setTsupdate(String tsupdate) {
 		this.tsupdate = tsupdate;
 	}
 	 
