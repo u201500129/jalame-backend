@@ -1,7 +1,5 @@
 package pe.tp1.hdpeta.jalame.bean;
-
-import java.io.InputStream;
-
+ 
 public class VehiculoFotoBean {
 	private int codVehiculo;
     private int codPersona;

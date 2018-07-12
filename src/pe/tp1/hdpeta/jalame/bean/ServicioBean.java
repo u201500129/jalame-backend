@@ -25,21 +25,32 @@ public class ServicioBean {
     private String commtUsua;
     private String commtCond;
     private String estadoServ;
+    private double importe;
     private String estadoR;
     private String tsupdate;
     
-    
+    //Referencias
+    private String usuario;
+    private String conductor;
+    private String vehiculo;
+    private String formaPago;
+
+ 
 	public ServicioBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+ 
+
 
 
 	public ServicioBean(int codServicio, int codConductor, int codUsuario, int codVehiculo, int codTarifa,
 			int codFormaPago, String fecRegistro, String inicioServ, String finServ, String origenDes, String origenLat,
 			String origenLon, String destinoDes, String destinoLat, String destinoLon, int calificacionUsuario,
 			int calificacionConductor, int calificacionVehiculo, String commtUsua, String commtCond, String estadoServ,
-			String estadoR, String tsupdate) {
+			double importe, String estadoR, String tsupdate, String usuario, String conductor, String vehiculo,
+			String formaPago) {
 		super();
 		this.codServicio = codServicio;
 		this.codConductor = codConductor;
@@ -62,8 +73,13 @@ public class ServicioBean {
 		this.commtUsua = commtUsua;
 		this.commtCond = commtCond;
 		this.estadoServ = estadoServ;
+		this.importe = importe;
 		this.estadoR = estadoR;
 		this.tsupdate = tsupdate;
+		this.usuario = usuario;
+		this.conductor = conductor;
+		this.vehiculo = vehiculo;
+		this.formaPago = formaPago;
 	}
 
 
@@ -278,6 +294,13 @@ public class ServicioBean {
 		this.estadoServ = estadoServ;
 	}
 
+	public double getImporte() {
+		return importe;
+	}
+
+	public void setImporte(double importe) {
+		this.importe = importe;
+	}
 
 	public String getEstadoR() {
 		return estadoR;
@@ -296,6 +319,39 @@ public class ServicioBean {
 
 	public void setTsupdate(String tsupdate) {
 		this.tsupdate = tsupdate;
+	}
+
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getConductor() {
+		return conductor;
+	}
+
+	public void setConductor(String conductor) {
+		this.conductor = conductor;
+	}
+
+	public String getVehiculo() {
+		return vehiculo;
+	}
+
+	public void setVehiculo(String vehiculo) {
+		this.vehiculo = vehiculo;
+	}
+
+	public String getFormaPago() {
+		return formaPago;
+	}
+
+	public void setFormaPago(String formaPago) {
+		this.formaPago = formaPago;
 	}
 	 
     
